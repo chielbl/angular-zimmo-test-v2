@@ -10,7 +10,7 @@ import {
 import { FeedbackService } from "../../services/feedback.service";
 import { RatingComponent } from "../rating/rating.component";
 import { Rating } from "../rating/rating.model";
-import { Feedback, FeedbackForm } from "./feedback.model";
+import { FeedbackForm, NewFeedback } from "./feedback.model";
 
 const ratingData:Rating[] = [
   {
@@ -79,7 +79,7 @@ export class FeedbackComponent {
     this.invalidSubmit = feedback.invalid;
     this.validSubmit = feedback.valid;
     if (feedback.invalid) return;
-    this.feedbackService.submit(feedback.value as Feedback).subscribe({
+    this.feedbackService.submit(feedback.value as NewFeedback).subscribe({
       next: (response) => {
         console.log("Response:", response);
         // Success
