@@ -7,7 +7,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { FeedbackForm } from "./feedback.model";
+import { FeedbackService } from "../../services/feedback.service";
+import { Feedback, FeedbackForm } from "./feedback.model";
 
 @Component({
   selector: "app-feedback",
@@ -52,6 +53,8 @@ export class FeedbackComponent {
   invalidSubmit: boolean = false;
   validSubmit: boolean = false;
 
+  constructor(private feedbackService: FeedbackService) {}
+
   ngOnInit() {
     this.feedback.valueChanges.subscribe(console.log);
   }
@@ -68,11 +71,20 @@ export class FeedbackComponent {
     this.invalidSubmit = false;
   }
 
-  onSubmit(feedback: FormGroup) {
+  onSubmit(feedback: FormGroup<FeedbackForm>) {
     console.log("onSubmit", feedback);
     this.invalidSubmit = feedback.invalid;
     this.validSubmit = feedback.valid;
     if (feedback.invalid) return;
+    this.feedbackService.submit(feedback.value as Feedback).subscribe({
+      next: (response) => {
+        console.log("Response:", response);
+        // Success
+      },
+      error: (error) => {
+        console.error("Error:", error);
+      },
+    });
   }
 
   // Status
