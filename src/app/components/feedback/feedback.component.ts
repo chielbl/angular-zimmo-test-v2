@@ -8,39 +8,42 @@ import {
   Validators,
 } from "@angular/forms";
 import { FeedbackService } from "../../services/feedback.service";
+import { RatingComponent } from "../rating/rating.component";
+import { Rating } from "../rating/rating.model";
 import { Feedback, FeedbackForm } from "./feedback.model";
+
+const ratingData:Rating[] = [
+  {
+    value: 1,
+    emoji: "frown",
+  },
+  {
+    value: 2,
+    emoji: "neutral",
+  },
+  {
+    value: 3,
+    emoji: "smile",
+  },
+  {
+    value: 4,
+    emoji: "laughing",
+  },
+  {
+    value: 5,
+    emoji: "heart-eyes",
+  },
+];
 
 @Component({
   selector: "app-feedback",
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RatingComponent],
   templateUrl: "./feedback.component.html",
   styleUrl: "./feedback.component.scss",
 })
 export class FeedbackComponent {
-  ratings: { value: number; emoji: string }[] = [
-    {
-      value: 1,
-      emoji: "frown",
-    },
-    {
-      value: 2,
-      emoji: "neutral",
-    },
-    {
-      value: 3,
-      emoji: "smile",
-    },
-    {
-      value: 4,
-      emoji: "laughing",
-    },
-    {
-      value: 5,
-      emoji: "heart-eyes",
-    },
-  ];
-
+  ratings: Rating[] = ratingData
   feedback: FormGroup<FeedbackForm> = new FormGroup<FeedbackForm>({
     rating: new FormControl(0, [
       Validators.required,
@@ -59,11 +62,11 @@ export class FeedbackComponent {
     this.feedback.valueChanges.subscribe(console.log);
   }
 
-  onRatingClick(r: { value: number; emoji: string }) {
-    console.log("onRatingChange", this.rating);
+  onRatingClick(rating: Rating) {
+    console.log("onRatingChange", rating);
     if (this.validSubmit) return;
-    this.feedback.get("rating")?.setValue(r.value);
-    this.activeRating = r;
+    this.feedback.get("rating")?.setValue(rating.value);
+    this.activeRating = rating;
   }
 
   onMessageChange() {
@@ -95,7 +98,7 @@ export class FeedbackComponent {
 
   // Messages
   get message() {
-    console.log("rating", this.feedback.get("message"));
+    console.log("message", this.feedback.get("message"));
     return this.feedback.get("message");
   }
   get invalidMessage() {

@@ -1,0 +1,76 @@
+@import "../../../sass/index.scss";
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    border-radius: 100%;
+    box-shadow: $shadow;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.2s;
+
+    @include respond("phone") {
+        width: 64px;
+        height: 64px;
+        font-size: 32px;
+    }
+
+    &-frown {
+        background-color: lighten($errorColor, 40%);
+        color: $errorColor;
+
+        &:hover,
+        &[class*="active"] {
+            background-color: $errorColor;
+            color: lighten($errorColor, 40%);
+        }
+    }
+
+    &-neutral {
+        background-color: lighten($warningColor, 35%);
+        color: $warningColor;
+
+        &:hover,
+        &[class*="active"] {
+            background-color: $warningColor;
+            color: lighten($warningColor, 35%);
+        }
+    }
+
+    &-smile {
+        background-color: lighten($neutralColor, 20%);
+        color: $neutralColor;
+
+        &:hover,
+        &[class*="active"] {
+            background-color: $neutralColor;
+            color: lighten($neutralColor, 20%);
+        }
+    }
+
+    &-laughing {
+        background-color: lighten($successColor, 40%);
+        color: $successColor;
+
+        &:hover,
+        &[class*="active"] {
+            background-color: $successColor;
+            color: lighten($successColor, 40%);
+        }
+    }
+
+    &-heart-eyes {
+        background-color: lighten($excellentColor, 40%);
+        color: $excellentColor;
+
+        &:hover,
+        &[class*="active"] {
+            background-color: $excellentColor;
+            color: lighten($excellentColor, 40%);
+        }
+    }
+}
