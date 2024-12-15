@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
@@ -41,21 +40,17 @@ export class FeedbackComponent {
     },
   ];
 
-  feedback: FormGroup<FeedbackForm>;
+  feedback: FormGroup<FeedbackForm> = new FormGroup<FeedbackForm>({
+    rating: new FormControl(0, [
+      Validators.required,
+      Validators.min(1),
+      Validators.max(5),
+    ]),
+    message: new FormControl("", Validators.required),
+  });
   activeRating?: { value: number; emoji: string };
   invalidSubmit: boolean = false;
   validSubmit: boolean = false;
-
-  constructor(private fb: FormBuilder) {
-    this.feedback = this.fb.group<FeedbackForm>({
-      rating: new FormControl(0, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(5),
-      ]),
-      message: new FormControl("", Validators.required),
-    });
-  }
 
   ngOnInit() {
     this.feedback.valueChanges.subscribe(console.log);
