@@ -1,0 +1,31 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == "4k" {
+    @media only screen and (min-width: 2160px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == "2k" {
+    @media only screen and (min-width: 1440px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 1080px) {
+      @content; // It's take the content where we use the mixin
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media only screen and (min-width: 720px) {
+      @content; // It's take the content where we use the mixin
+    }
+  }
+
+  @if $breakpoint == phone {
+    @media only screen and (min-width: 480px) {
+      @content; // It's take the content where we use the mixin
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<form class="feedback" [formGroup]="feedback" (ngSubmit)="onSubmit(feedback)">
+  <h3 class="feedback_header">Hoe eenvoudig kon je je huis online plaatsen?</h3>
+
+  <div class="feedback_ratings">
+    @for (r of ratings; track r) {
+      <button
+        type="button"
+        class="feedback_ratings_rating feedback_ratings_rating-{{ r.emoji }} {{
+          r.emoji === activeRating?.emoji ? 'active' : 'test'
+        }}"
+        (click)="onRatingClick(r)"
+      >
+        <i class="bi bi-emoji-{{ r.emoji }}"> </i>
+      </button>
+    }
+  </div>
+
+  @if (rating?.valid && !validSubmit) {
+    <div class="feedback_message">
+      <Label for="message">Geef je graag wat meer uitleg?</Label>
+      <textarea
+        id="message"
+        [ngClass]="{
+          error: invalidMessage || invalidSubmit,
+        }"
+        formControlName="message"
+        placeholder="message"
+        (ngModelChange)="onMessageChange()"
+      ></textarea>
+    </div>
+
+    @if (invalidMessage || invalidSubmit) {
+      <p class="feedback_error">Dit veld is verplicht</p>
+    }
+
+    <div class="feedback_footer">
+      <p>Wij verwerken uw gegevens conform onze privacy policy</p>
+      <button type="submit" class="btn btn-fill">Verzenden</button>
+    </div>
+  }
+  @if (validSubmit) {
+    <p class="feedback_success">Feedback met succes verzonden!</p>
+  }
+</form>

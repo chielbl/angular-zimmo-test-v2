@@ -1,0 +1,53 @@
+@import "../sass/index.scss";
+
+.main {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  min-height: 100vh;
+
+  & section {
+    display: flex;
+    gap: 32px;
+    padding: 48px 8px;
+    flex-direction: column;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 32px;
+    flex: 1;
+    background-color: $baseColor200;
+    padding: 16px;
+
+    & h2 {
+      text-align: center;
+    }
+
+    & .cards {
+      display: grid;
+      justify-content: center;
+      max-width: 1440px;
+      margin: 0 auto;
+      gap: 24px;
+      grid-template-columns: repeat(1, minmax(320px, 400px));
+
+      @include respond("tablet") {
+        grid-template-columns: repeat(2, minmax(320px, 400px));
+      }
+
+      @include respond("2k") {
+        grid-template-columns: repeat(4, minmax(320px, 400px));
+      }
+
+      & li {
+        overflow: hidden;
+        height: 400px;
+      }
+    }
+  }
+}

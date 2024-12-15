@@ -1,0 +1,17 @@
+<main class="main">
+  <section>
+    <app-feedback />
+    <app-info />
+  </section>
+
+  <div>
+    <h2>Hoe verkoop je het beste een huis?</h2>
+    <ul class="cards">
+      @for (x of [0, 1, 2, 3]; track x) {
+        <li>
+          <app-card />
+        </li>
+      }
+    </ul>
+  </div>
+</main>

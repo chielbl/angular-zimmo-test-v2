@@ -1,0 +1,158 @@
+@import "../../../sass/index.scss";
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+
+  &_header {
+    display: block;
+    background-color: $primaryColor;
+    padding: 24px 16px 40px 16px;
+    max-width: 100%;
+    color: $baseColor100;
+    border-radius: 100px;
+  }
+
+  &_ratings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transform: translateY(-32px);
+
+    @include respond("phone") {
+      gap: 16px;
+    }
+
+    &_rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+      border-radius: 100%;
+      box-shadow: $shadow;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: all 0.2s;
+
+      @include respond("phone") {
+        width: 64px;
+        height: 64px;
+        font-size: 32px;
+      }
+
+      &-frown {
+        background-color: lighten($errorColor, 40%);
+        color: $errorColor;
+
+        &:hover,
+        &[class*="active"] {
+          background-color: $errorColor;
+          color: lighten($errorColor, 40%);
+        }
+      }
+
+      &-neutral {
+        background-color: lighten($warningColor, 35%);
+        color: $warningColor;
+
+        &:hover,
+        &[class*="active"] {
+          background-color: $warningColor;
+          color: lighten($warningColor, 35%);
+        }
+      }
+
+      &-smile {
+        background-color: lighten($neutralColor, 20%);
+        color: $neutralColor;
+
+        &:hover,
+        &[class*="active"] {
+          background-color: $neutralColor;
+          color: lighten($neutralColor, 20%);
+        }
+      }
+
+      &-laughing {
+        background-color: lighten($successColor, 40%);
+        color: $successColor;
+
+        &:hover,
+        &[class*="active"] {
+          background-color: $successColor;
+          color: lighten($successColor, 40%);
+        }
+      }
+
+      &-heart-eyes {
+        background-color: lighten($excellentColor, 40%);
+        color: $excellentColor;
+
+        &:hover,
+        &[class*="active"] {
+          background-color: $excellentColor;
+          color: lighten($excellentColor, 40%);
+        }
+      }
+    }
+
+    & input {
+      display: none;
+    }
+  }
+
+  &_message {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & label {
+      font-weight: bold;
+    }
+
+    & textarea {
+      min-height: 80px;
+      max-height: 240px;
+      border: 1px solid lighten(grey, 30%);
+      border-radius: 4px;
+      padding: 8px;
+      resize: vertical;
+
+      &[class*="error"] {
+        border-color: red;
+      }
+    }
+  }
+
+  &_error {
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+    align-self: self-start;
+  }
+
+  &_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+
+    & p {
+      font-size: 12px;
+      font-style: italic;
+      color: lighten(gray, 20%);
+    }
+  }
+
+  &_success {
+    padding: 16px;
+    background-color: rgba($successColor, 0.2);
+    color: $successColor;
+    text-align: start;
+  }
+}

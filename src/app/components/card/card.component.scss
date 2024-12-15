@@ -1,0 +1,35 @@
+@import "../../../sass/index.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $baseColor100;
+  border-radius: 8px;
+  gap: 8px;
+  height: 100%;
+  overflow: hidden;
+
+  &_image {
+    object-fit: cover;
+    height: 45%;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 32px;
+    margin-top: 32px;
+    font-size: 14px;
+    flex: 1;
+
+    &_text {
+      opacity: 0.6;
+    }
+  }
+
+  &_link {
+    color: $primaryColor;
+    font-weight: bold;
+  }
+}
