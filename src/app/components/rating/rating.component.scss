@@ -18,15 +18,22 @@
         height: 64px;
         font-size: 32px;
     }
+    
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.8;
+    }
 
     &-frown {
         background-color: lighten($errorColor, 40%);
         color: $errorColor;
 
-        &:hover,
-        &[class*="active"] {
-            background-color: $errorColor;
-            color: lighten($errorColor, 40%);
+        &:not(.disabled) {
+            &:hover,
+            &[class*="active"] {
+                background-color: $errorColor;
+                color: lighten($errorColor, 40%);
+            }
         }
     }
 
@@ -34,10 +41,12 @@
         background-color: lighten($warningColor, 35%);
         color: $warningColor;
 
-        &:hover,
-        &[class*="active"] {
-            background-color: $warningColor;
-            color: lighten($warningColor, 35%);
+        &:not(.disabled) {
+            &:hover,
+            &[class*="active"] {
+                background-color: $warningColor;
+                color: lighten($warningColor, 35%);
+            }
         }
     }
 
@@ -45,10 +54,12 @@
         background-color: lighten($neutralColor, 20%);
         color: $neutralColor;
 
-        &:hover,
-        &[class*="active"] {
-            background-color: $neutralColor;
-            color: lighten($neutralColor, 20%);
+        &:not(.disabled) {
+            &:hover,
+            &[class*="active"] {
+                background-color: $neutralColor;
+                color: lighten($neutralColor, 20%);
+            }
         }
     }
 
@@ -56,10 +67,12 @@
         background-color: lighten($successColor, 40%);
         color: $successColor;
 
-        &:hover,
-        &[class*="active"] {
-            background-color: $successColor;
-            color: lighten($successColor, 40%);
+        &:not(.disabled) {
+            &:hover,
+            &[class*="active"] {
+                background-color: $successColor;
+                color: lighten($successColor, 40%);
+            }
         }
     }
 
@@ -67,10 +80,12 @@
         background-color: lighten($excellentColor, 40%);
         color: $excellentColor;
 
-        &:hover,
-        &[class*="active"] {
-            background-color: $excellentColor;
-            color: lighten($excellentColor, 40%);
+        &:not(.disabled) {
+            &:hover,
+            &[class*="active"] {
+                background-color: $excellentColor;
+                color: lighten($excellentColor, 40%);
+            }
         }
     }
 }

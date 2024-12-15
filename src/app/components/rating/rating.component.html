@@ -1,6 +1,8 @@
 <button
     type="button"
-    class="rating rating-{{ rating.emoji }} {{ active && 'active' }}"
+    class="rating rating-{{ rating.emoji }} {{ active && 'active' }} {{
+        disabled && !active && 'disabled'
+    }}"
     (click)="onClick()"
 >
     <i class="bi bi-emoji-{{ rating.emoji }}"> </i>

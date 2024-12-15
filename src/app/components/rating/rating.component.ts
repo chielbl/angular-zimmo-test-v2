@@ -11,6 +11,7 @@ import { Rating } from "./rating.model";
 export class RatingComponent {
   @Input() rating!: Rating;
   @Input() active?: boolean;
+  @Input() disabled?: boolean;
 
   @Output() ratingSelected = new EventEmitter<Rating>();
 
